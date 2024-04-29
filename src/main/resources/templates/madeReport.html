@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #000000;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #7f7f7f;
+    }
+    td {
+        background-color: #d3d3d3;
+    }
+    </style>
+</head>
+<body>
+<h1 th:text="${type}"/>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th th:text="${stat}"></th>
+        <th th:text="${spm}"></th>
+        <th th:text="${m}"></th>
+    </tr>
+    <tr th:each="article : ${repo}" >
+        <td th:text="${article[0]}"></td>
+        <td th:text="${article[1]}"></td>
+        <td th:text="${article[2]}"></td>
+        <td th:text="${article[3]}"></td>
+        <td th:text="${article[4]}"></td>
+        <td th:text="${article[5]}"></td>
+    </tr>
+</table>
+<a href="http://localhost:8080/Performance">Back</a>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #000000;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #7f7f7f;
+    }
+    td {
+        background-color: #d3d3d3;
+    }
+    </style>
+</head>
+<body>
+<h2>Teams</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Team Captain Number</th>
+        <th>Team Player Count</th>
+    </tr>
+    <tr th:each="article : ${repo}" >
+        <td th:text="${article.id}"></td>
+        <td th:text="${article.name}"></td>
+        <td th:text="${article.teamCaptain}"></td>
+        <td th:text="${article.rosterSize}"></td>
+    </tr>
+</table>
+
+<a href="http://localhost:8080/Performance">Back</a>
+</body>
+</html>

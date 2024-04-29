@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Form</title>
+</head>
+<body>
+<h2>Edit Performance</h2>
+<form th:object="${formData}">
+    <a>Editing performance with id:</a>
+    <a th:text="${editId}" id="idField"></a>
+    <br/>
+    <label for="input1">Points:</label>
+    <input type="text" id="input1" name="input1" th:field="*{input1}"><br>
+
+    <label for="input2">Rebounds:</label>
+    <input type="text" id="input2" name="input2" th:field="*{input2}"><br>
+
+    <label for="input3">Assists:</label>
+    <input type="text" id="input3" name="input3" th:field="*{input3}"><br>
+
+    <label for="input4">Steals:</label>
+    <input type="text" id="input4" name="input4" th:field="*{input4}"><br>
+
+    <label for="input5">Blocks:</label>
+    <input type="text" id="input5" name="input5" th:field="*{input5}"><br>
+
+    <label for="input6">Minutes:</label>
+    <input type="text" id="input6" name="input6" th:field="*{input6}"><br>
+
+    <label for="input7">player ID:</label>
+    <input type="text" id="input7" name="input7" th:field="*{input7}"><br>
+    <a id="submitLink" href="#" onclick="submitForm()">Submit</a>
+    <a href="http://localhost:8080/Performance">Back</a>
+</form>
+<script>
+        function submitForm() {
+            var points = document.getElementById("input1").value;
+            var assists = document.getElementById("input3").value;
+            var rebounds = document.getElementById("input2").value;
+            var steals = document.getElementById("input4").value;
+            var blocks = document.getElementById("input5").value;
+            var minutes = document.getElementById("input6").value;
+            var pid = document.getElementById("input7").value;
+            var url = window.location.href;
+            // Create a URLSearchParams object from the URL
+            var eid = url.split("=")[1];
+
+            window.location.href = "http://localhost:8080/Performance?points=" + points + "&rebounds=" + rebounds + "&assists=" + assists +
+            "&steals=" + steals + "&blocks=" + blocks + "&mins=" + minutes + "&pid=" + pid + "&eid=" + eid;
+        }
+</script>
+</body>
+</html>

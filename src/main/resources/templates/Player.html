@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #000000;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #7f7f7f;
+    }
+    td {
+        background-color: #d3d3d3;
+    }
+    </style>
+</head>
+<body>
+<h2>Players</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Number</th>
+        <th>Position</th>
+        <th>Team Name</th>
+        <th>Total Points</th>
+        <th>Total Assists</th>
+        <th>Total Rebounds</th>
+        <th>Total Steals</th>
+        <th>Total Blocks</th>
+        <th>Total Minutes</th>
+        <th>Total Score</th>
+        <th>Games Played</th>
+    </tr>
+    <tr th:each="article : ${repo}" >
+        <td th:text="${article.id}"></td>
+        <td th:text="${article.firstName}"></td>
+        <td th:text="${article.lastName}"></td>
+        <td th:text="${article.number}"></td>
+        <td th:text="${article.position}"></td>
+        <td th:text="${article.teamName}"></td>
+        <td th:text="${article.ppg}"></td>
+        <td th:text="${article.apg}"></td>
+        <td th:text="${article.rpg}"></td>
+        <td th:text="${article.spg}"></td>
+        <td th:text="${article.bpg}"></td>
+        <td th:text="${article.mpg}"></td>
+        <td th:text="${article.st}"></td>
+        <td th:text="${article.gp}"></td>
+    </tr>
+</table>
+
+<a href="http://localhost:8080/Performance">Back</a>
+</body>
+</html>

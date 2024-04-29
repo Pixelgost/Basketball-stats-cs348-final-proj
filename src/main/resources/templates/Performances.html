@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #000000;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #7f7f7f;
+    }
+    td {
+        background-color: #d3d3d3;
+    }
+    </style>
+</head>
+<body>
+<h2>Performances</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>playerID</th>
+        <th>Points</th>
+        <th>Assists</th>
+        <th>Rebounds</th>
+        <th>Steals</th>
+        <th>Blocks</th>
+        <th>Minutes</th>
+        <th>Score</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    <tr th:each="article : ${repo}" >
+        <td th:text="${article.id}"></td>
+        <td th:text="${article.playerID}"></td>
+        <td th:text="${article.points}"></td>
+        <td th:text="${article.assists}"></td>
+        <td th:text="${article.rebounds}"></td>
+        <td th:text="${article.steals}"></td>
+        <td th:text="${article.blocks}"></td>
+        <td th:text="${article.minutes}"></td>
+        <td th:text="${article.score}"></td>
+        <td>
+            <a th:href="@{'http://localhost:8080/editPerformance?editID=' + ${article.id}}">Edit Performance</a>
+        </td>
+        <td>
+            <a th:href="@{'http://localhost:8080/Performance?pid=-1&eid=' + ${article.id}}">Delete Performance</a>
+        </td>
+    </tr>
+</table>
+<a th:href="'http://localhost:8080/addPerformance'">Add A New Performance</a>
+<a th:href="'http://localhost:8080/Player'">View Players</a>
+<a href="http://localhost:8080/Team">View Teams</a>
+<a href="http://localhost:8080/report">Generate Report</a>
+
+
+</body>
+</html>

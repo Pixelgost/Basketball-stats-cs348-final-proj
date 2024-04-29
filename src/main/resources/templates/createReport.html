@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Form</title>
+</head>
+<body>
+<h2>Create a New Report</h2>
+<form th:object="${formData}">
+    <label for="reportType">Choose a Type:</label>
+    <select name="reportType" id="reportType">
+        <option value="Player">Players</option>
+        <option value="Performance">Performances</option>
+    </select>
+    <label for="reportField">Choose a Field:</label>
+    <select name="reportField" id="reportField">
+        <option value="0">Points</option>
+        <option value="3">Assists</option>
+        <option value="2">Rebounds</option>
+        <option value="5">Steals</option>
+        <option value="4">Blocks</option>
+        <option value="1">Overall Score</option>
+    </select>
+    <label for="reportMode">Choose a Mode:</label>
+    <select name="reportMode" id="reportMode">
+        <option value="DESC">Best</option>
+        <option value="ASC">Worst</option>
+    </select>
+    <label for="reportComp">Choose a Comparator:</label>
+    <select name="reportComp" id="reportComp">
+        <option value=">=">Greater Than or Equal to Bound</option>
+        <option value="<=">Less Than or Equal to Bound</option>
+    </select>
+    <label for="reportBound">Choose a Bound:</label>
+    <input type="text" id="reportBound" name="reportBound" th:field="*{input1}"><br>
+    <label for="input3">Limit: </label>
+    <input type="text" id="input3" name="input3" th:field="*{input3}" value="5"><br>
+    <a id="submitLink" href="#" onclick="submitForm()">Submit</a>
+    <a href="http://localhost:8080/Performance">Back</a>
+</form>
+<script>
+        function submitForm() {
+            var Type = document.getElementById("reportType").value;
+            var Field = document.getElementById("reportField").value;
+            var Mode = document.getElementById("reportMode").value;
+            var Comp = document.getElementById("reportComp").value;
+            var Bound = document.getElementById("reportBound").value;
+            var Limit = document.getElementById("input3").value;
+            if (Type === "Player") {
+                window.location.href = "http://localhost:8080/madePlayReport?Field=" + Field + "&Order=" +
+                    Mode + "&Limit=" + Limit + "&Bounds=" + Bound + "&Comparator=" + Comp;
+            } else {
+                window.location.href = "http://localhost:8080/madePerfReport?Field=" + Field + "&Order=" +
+                    Mode + "&Limit=" + Limit + "&Bounds=" + Bound + "&Comparator=" + Comp;
+            }
+        }
+</script>
+</body>
+</html>
